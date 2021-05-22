@@ -105,7 +105,7 @@ export default function Enthusiasm({
             <table ref={tableRef}>
               <thead>
                 <tr>
-                  <th style={colHead}>Candidate</th>
+                  <th style={colHead}></th>
                   <th style={colHead}>Stars</th>
                   <th style={bg(0)}>0</th>
                   <th style={bg(1)}>1</th>
