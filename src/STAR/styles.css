@@ -97,8 +97,9 @@ button.primary:hover {
   border-radius: 0.5em;
 }
 .help {
-  margin: 1em 1em 2em 1em;
-  max-width: 20em;
+  margin: 2em 0em 0em 2em;
+  width: 70%;
+  max-width: 100em;
   background-color: #ffd956;
   color: black;
   padding: 0.5em 1em 1em 1em;
@@ -155,7 +156,7 @@ h3 {
   background: #026a86ff;
 
   padding: 0.5em 0.5em;
-  border-radius: 3px;
+  border-radius: 0.5em;
 }
 .wrapper .star > div > div {
   background: white;

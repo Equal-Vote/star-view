@@ -59,15 +59,15 @@ export default function StarView(props) {
         showHelp={showHelp}
         setShowHelp={setShowHelp}
       />
+      {showHelp && !editMode && (
+        <Help
+          isMulti={isMulti}
+          setIsMulti={setIsMulti}
+          setShowHelp={setShowHelp}
+          setEditMode={setEditMode}
+        />
+      )}
       <div className="wrapper">
-        {showHelp && !editMode && (
-          <Help
-            isMulti={isMulti}
-            setIsMulti={setIsMulti}
-            setShowHelp={setShowHelp}
-            setEditMode={setEditMode}
-          />
-        )}
         {!editMode && cvr && (
           <Results
             title={title}
