@@ -55,9 +55,6 @@ export default function Edit({ csv, title, onSave, onCancel, invalid }) {
         </div>
       )}
       <textarea
-        style={{
-          height: invalid ? "calc(100vh - 40.75em)" : "calc(100vh - 25em)"
-        }}
         spellCheck="false"
         value={data}
         onChange={handleDataChange}
@@ -69,7 +66,7 @@ export default function Edit({ csv, title, onSave, onCancel, invalid }) {
         </button>
         &nbsp;&nbsp;
         <button onClick={onCancel}>Cancel</button>
-        <span style={{ marginLeft: "1em" }}>Load Example Data:</span>
+        <span className="label">Load Example Data:</span>
         <button onClick={() => onLoad(0)}>Tiny</button>
         <button onClick={() => onLoad(1)}>Presidential Poll</button>
         <button onClick={() => onLoad(2)}>IPO Sec Of State</button>

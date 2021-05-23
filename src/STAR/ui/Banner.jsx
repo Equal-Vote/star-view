@@ -13,7 +13,7 @@ export default function Banner({
       <div className="banner">
         <div>
           <img className="rotate" src="/StarVoting.png" alt="STAR Voting" />
-          <h1>STAR VIEW</h1>
+          <h1>Star View</h1>
           <div className="mainmenu">
             <div onClick={() => setIsMulti(!isMulti)}>
               {isMulti ? "Multi-Winner" : "Single-Winner"}
@@ -25,7 +25,7 @@ export default function Banner({
                 //setShowHelp(false);
               }}
             >
-              EDIT
+              Edit
             </div>
             <div
               className={showHelp ? "selected" : ""}

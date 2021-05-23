@@ -11,9 +11,15 @@
 
   --link: blue;
   --base-font-family: Montserrat;
-  --base-bg-color: black;
-  --base-text-color: white;
+  --base-text-color: black;
+  --base-bg-color: white;
+  --banner-text-color: white;
   --banner-bg-color: var(--pink);
+  --banner-bg-selected: var(--yellow);
+  --widget-text-color: #404040;
+  --widget-bg-color: #e0e0e0;
+  --edit-text-color: #e0e0e0;
+  --edit-bg-color: #404040;
   --mainmenu-selected-color: var(--gold);
   --win-dark: hsl(130, 60%, 35%);
   --win-light: hsl(95, 50%, 85%);
@@ -50,6 +56,20 @@ h4 {
   padding: 0;
   margin: 0;
 }
+button {
+  font-size: 1em;
+  color: white;
+  background-color: var(--teal);
+  border: none;
+  text-decoration: none;
+  margin-left: 1em;
+  padding: 0.25em 1em;
+}
+
+button.primary {
+  font-size: 1.5em;
+  background-color: var(--pink);
+}
 a,
 .link,
 .link:visited {
@@ -82,17 +102,17 @@ table {
 /**********************************************
   Banner styles for the application header 
 **********************************************/
+.banner {
+  height: 100px;
+  margin-bottom: 20px;
+  font-variant: small-caps;
+}
 .banner > .rotate {
   transform: rotate(-3.5deg);
 }
 .banner > .unrotate {
   transform: rotate(3.5deg);
 }
-.banner {
-  height: 100px;
-  margin-bottom: 20px;
-}
-
 .banner > div {
   transform: rotate(-3.5deg);
   position: absolute;
@@ -100,6 +120,7 @@ table {
   left: -120px;
   width: 2000px;
   height: 90px;
+  color: var(--banner-text-color);
   background-color: var(--banner-bg-color);
   padding-left: 150px;
   padding-top: 0em;
@@ -134,7 +155,7 @@ table {
 .mainmenu > .selected {
   font-weight: bold;
   color: var(--banner-bg-color);
-  background-color: var(--yellow);
+  background-color: var(--banner-bg-selected);
 }
 
 /**********************************************
@@ -148,8 +169,10 @@ table {
 .widget {
   margin: 1em;
   padding: 1em;
-  background-color: var(--teal);
+  color: var(--widget-text-color);
+  background-color: var(--widget-bg-color);
   border-radius: 0.5em;
+  border: 1px solid #404040;
 }
 .widget .summary {
   text-align: center;
@@ -184,24 +207,22 @@ table {
   font-weight: 200;
   font-style: italic;
 }
-.widget .summary h4 {
-  font-size: 1.5em;
+.widget .summary .candidate {
+  font-size: 1.75em;
   font-weight: 400;
   font-style: normal;
-}
-.widget .summary .candidate {
   color: black;
   background-color: white;
+  font-weight: 700;
   width: 100%;
-  margin: 0.25em 0.75em 0.75em 0.75em;
+  margin: 0.1em 0.75em 0.5em 0.75em;
 }
 .widget .summary .support {
-  margin: 0;
   padding: 0;
-  height: 1.25em;
+  height: 0.75em;
 }
 .widget .summary .rating {
-  margin: 0;
+  margin: 0 0 -0.25em 0;
   padding: 0;
 }
 
@@ -212,7 +233,9 @@ table {
   font-weight: 400;
   font-size: 75%;
 }
-
+.widget td {
+  min-width: 0em;
+}
 .widget.score > div {
   margin: 0.5em;
   padding: 0.5em;
@@ -220,7 +243,7 @@ table {
   background-color: white;
 }
 .widget.score table {
-  border-bottom: 0.25em solid black;
+  border-bottom: 4px solid black;
   margin: 0.5em;
   width: 98%;
 }
@@ -229,10 +252,10 @@ table {
   font-weight: 200;
 }
 .widget.score th {
-  border-bottom: 0.2em solid black;
+  border-bottom: 4px solid black;
 }
 .widget.score td {
-  border-bottom: 0.1em solid grey;
+  border-bottom: 2px solid grey;
   font-size: 1.25em;
   padding: 0.2em 0.4em;
   text-align: center;
@@ -241,23 +264,24 @@ table {
   font-size: 1.2em;
   font-weight: 400;
   vertical-align: bottom;
-  border-bottom: 0.25em solid black;
+  border-bottom: 4px solid black;
 }
 .widget.score th.average {
   font-size: 0.75em;
   font-weight: 400;
   text-align: center;
   padding: 0.25em 0.5em;
-  border-bottom: 0.35em solid black;
+  border-bottom: 4px solid black;
 }
 .widget.score td.name {
+  width: 12em;
   font-size: 1.25em;
-  font-weight: 700;
+  font-weight: 400;
   text-align: right;
 }
 .widget.score td.average {
-  border-left: 0.1em solid grey;
-  border-right: 0.1em solid grey;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
 }
 
 .widget.runoff > div {
@@ -267,7 +291,7 @@ table {
   background-color: white;
 }
 .widget.runoff table {
-  border-bottom: 0.25em solid black;
+  border-bottom: 4px solid black;
   margin: 0.5em;
   width: 98%;
 }
@@ -291,30 +315,32 @@ table {
   font-weight: 400;
   text-align: center;
   vertical-align: bottom;
-  border-bottom: 0.2em solid black;
-  border-right: 0.1em solid grey;
+  border-bottom: 4px solid black;
+  border-right: 1px solid grey;
 }
 .widget.runoff td {
-  border-bottom: 0.1em solid grey;
+  border-bottom: 2px solid grey;
   font-size: 1.25em;
   padding: 0.2em 0.4em;
-  border-right: 0.1em solid grey;
+  border-right: 1px solid grey;
   text-align: center;
 }
 .widget.runoff th.name {
   font-size: 1.2em;
   font-weight: 400;
   vertical-align: bottom;
-  border-bottom: 0.25em solid black;
+  text-align: left;
+  border-bottom: 4px solid black;
 }
 .widget.runoff td.name {
+  width: 12em;
   font-size: 1.25em;
-  font-weight: 700;
+  font-weight: 400;
   text-align: right;
 }
 .widget.runoff td.average {
-  border-left: 0.1em solid grey;
-  border-right: 0.1em solid grey;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
 }
 
 /* These are for the alternate star-vote style runoff matrix */
@@ -372,36 +398,25 @@ table {
 **********************************************/
 
 .editmode {
-  padding-left: 1em;
+  padding: 0.5em 0em 1em 1.5em;
+  color: var(--edit-text-color);
+  background-color: var(--edit-bg-color);
 }
 .editmode textarea {
   width: 98%;
-  height: 65vh;
-  font-size: 14px;
+  height: calc(100vh - 27em);
+  font-size: 1em;
+  padding: 0.25em 0.5em;
 }
 
 .editmode input {
-  width: 98%;
-  font-size: 16px;
+  width: 97%;
+  font-size: 2em;
+  padding: 0.25em 0.5em;
 }
 
 .editmode .buttons {
   margin-top: 0.5em;
-}
-
-button {
-  font-size: 1em;
-  background-color: #2aa2b3;
-  border: none;
-  text-decoration: none;
-  margin-left: 1em;
-  padding: 0.25em 1em;
-}
-
-button.primary {
-  font-size: 1.5em;
-  background-color: #ee2c53;
-  color: white;
 }
 
 .editmode h2 {
@@ -416,7 +431,10 @@ button.primary {
   background-color: var(--pink);
   border-radius: 0.5em;
 }
-
+.editmode .label {
+  margin-left: 2em;
+  font-style: italic;
+}
 .editmode .invalid h3 {
   font-size: 1.25em;
 }

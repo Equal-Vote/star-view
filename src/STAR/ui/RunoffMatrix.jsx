@@ -71,7 +71,7 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
         default:
       }
     }
-    return <td />;
+    return <td key={key} />;
   }
 
   const tableRef = useRef();
