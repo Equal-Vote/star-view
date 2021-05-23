@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Support({ candidate }) {
+export default function Support({ candidate, scoreGradiant }) {
   const total = candidate.support.reduce((current, total) => total + current);
   const width = candidate.support.map((value) => (value / total) * 100);
   const offset = [
@@ -12,21 +12,13 @@ export default function Support({ candidate }) {
     width[5]
   ];
 
-  const colors = [
-    "#e0e0e0",
-    "#b5d2a9",
-    "#83d475",
-    "#57c84d",
-    "#2eb62c",
-    "#019021"
-  ];
   const Bar = ({ index }) => (
     <rect
       width={width[index]}
       height="100"
       x={100 - offset[index]}
       y="0"
-      fill={colors[index]}
+      fill={scoreGradiant[index]}
       strokeWidth="0"
     >
       <title>

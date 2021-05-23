@@ -7,7 +7,7 @@ export default function StarSummary(props) {
   const tableRef = useRef();
   const tableWidth = useWidth(tableRef);
 
-  const { cvr, showHelp, isMulti, onHover, selected } = props;
+  const { cvr, showHelp, isMulti } = props;
   const votes = cvr.voters.length;
   const undervotes = cvr.undervotes.length;
   const { sections, candidates, matrix } = isMulti
@@ -34,12 +34,9 @@ export default function StarSummary(props) {
         <div ref={tableRef}>
           {sections.map((section, n) => (
             <CandidateGroup
+              {...props}
               key={isMulti ? `m${n}` : `s${n}`}
               section={section}
-              onHover={onHover}
-              isMulti={isMulti}
-              selected={selected}
-              cvr={cvr}
             />
           ))}
         </div>

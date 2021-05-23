@@ -3,7 +3,8 @@ import Rating from "./Rating";
 import Compare from "./Compare";
 import Support from "./Support";
 
-export default function Candidate({ candidate, selected, onHover, cvr }) {
+export default function Candidate(props) {
+  const { candidate, selected, onHover, cvr } = props;
   return (
     <div
       className="center fullwidth"
@@ -20,7 +21,7 @@ export default function Candidate({ candidate, selected, onHover, cvr }) {
       ) : (
         <>
           <Rating rating={Number(candidate.averageScore)} />
-          <Support candidate={candidate} />
+          <Support {...props} candidate={candidate} />
         </>
       )}
     </div>

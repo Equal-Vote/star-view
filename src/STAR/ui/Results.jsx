@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import StarSummary from "./StarSummary";
 import RunoffMatrix from "./RunoffMatrix";
 import ScoreSummary from "./ScoreSummary";
+import { scoreGradiant } from "./themeColors";
 
 export default function Results(props) {
   const [selected, setSelected] = useState(null);
+  const [gradiant, setGradiant] = useState(0);
+
+  const nextGradiant = () => setGradiant((gradiant + 1) % scoreGradiant.length);
+
   const handleHover = (candidate, active) => {
     setSelected(null);
     /*
@@ -35,9 +40,20 @@ export default function Results(props) {
 
   return (
     <>
-      <StarSummary {...props} onHover={handleHover} selected={selected} />
+      <StarSummary
+        {...props}
+        scoreGradiant={scoreGradiant[gradiant]}
+        onHover={handleHover}
+        selected={selected}
+      />
       <div>
-        <ScoreSummary {...props} onHover={handleHover} selected={selected} />
+        <ScoreSummary
+          {...props}
+          scoreGradiant={scoreGradiant[gradiant]}
+          nextScoreGradiant={nextGradiant}
+          onHover={handleHover}
+          selected={selected}
+        />
         <RunoffMatrix {...props} onHover={handleHover} selected={selected} />
       </div>
     </>
