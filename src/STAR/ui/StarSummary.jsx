@@ -16,9 +16,9 @@ export default function StarSummary(props) {
 
   return (
     <div className="widget">
-      <div className="star">
-        <h1 className="title">{props.title}</h1>
-        <h2 className="subtitle">
+      <div className="summary">
+        <h1>{props.title}</h1>
+        <h2>
           {votes} voters {undervotes ? `plus ${undervotes} undervotes` : ""}
         </h2>
         {showHelp && (

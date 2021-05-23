@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./styles.css";
 import Banner from "./ui/Banner";
 import Edit from "./ui/Edit";
 import Help from "./ui/Help";

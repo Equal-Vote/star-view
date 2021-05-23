@@ -17,7 +17,7 @@ export default function SheetLoader({ match, location }) {
     .then((response) => response.json())
     .then(handleResponse);
 
-  return csv ? <StarView csv={csv} title={title} /> : <div>Loading...</div>;
+  return csv ? <StarView csv={csv} title={sheetName} /> : <div>Loading...</div>;
 }
 
 function handleResponse(json) {

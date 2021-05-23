@@ -15,7 +15,6 @@ function flatten(cvr, sections) {
     candidates: candidates,
     matrix: matrix
   };
-  console.log("results", results);
   return results;
 }
 

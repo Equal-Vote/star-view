@@ -7,15 +7,15 @@ export default function Candidate(props) {
   const { candidate, selected, onHover, cvr } = props;
   return (
     <div
-      className="center fullwidth"
+      className="candidate"
       onMouseEnter={() => onHover(candidate, true)}
       onMouseLeave={() => onHover(candidate, false)}
     >
-      <h2
+      <h4
         className={selected && selected.name === candidate.name ? "self" : ""}
       >
-        <b>{candidate.name}</b>
-      </h2>
+        {candidate.name}
+      </h4>
       {selected ? (
         <Compare selected={selected} candidate={candidate} cvr={cvr} />
       ) : (

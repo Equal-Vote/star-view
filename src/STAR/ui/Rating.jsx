@@ -5,10 +5,10 @@ export default class Rating extends Component {
   render() {
     // aggregateRating = 2.35;
     return (
-      <div className="tight">
+      <div className="rating">
         <StarRatings
           rating={this.props.rating}
-          widgetDimensions="1.6em"
+          widgetDimensions="1.75em"
           widgetSpacings="0px"
           widgetRatedColors="#f9a602"
         >

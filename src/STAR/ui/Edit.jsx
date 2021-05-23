@@ -63,16 +63,17 @@ export default function Edit({ csv, title, onSave, onCancel, invalid }) {
         onChange={handleDataChange}
         autoFocus={true}
       />
-      <br />
-      <button className="primary" onClick={() => onSave(data, caption)}>
-        Save
-      </button>
-      &nbsp;&nbsp;
-      <button onClick={onCancel}>Cancel</button>
-      <span style={{ marginLeft: "1em" }}>Load Example Data:</span>
-      <button onClick={() => onLoad(0)}>Tiny</button>
-      <button onClick={() => onLoad(1)}>Presidential Poll</button>
-      <button onClick={() => onLoad(2)}>IPO Sec Of State</button>
+      <div className="buttons">
+        <button className="primary" onClick={() => onSave(data, caption)}>
+          Save
+        </button>
+        &nbsp;&nbsp;
+        <button onClick={onCancel}>Cancel</button>
+        <span style={{ marginLeft: "1em" }}>Load Example Data:</span>
+        <button onClick={() => onLoad(0)}>Tiny</button>
+        <button onClick={() => onLoad(1)}>Presidential Poll</button>
+        <button onClick={() => onLoad(2)}>IPO Sec Of State</button>
+      </div>
     </div>
   );
 }
