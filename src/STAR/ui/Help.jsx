@@ -29,7 +29,7 @@ export default function Help({
             </li>
           </ul>
           <p className="larger">
-            Click{" "}
+            <b>TIP</b>: Click{" "}
             <b
               className="link"
               onClick={() => {
@@ -39,8 +39,7 @@ export default function Help({
             >
               EDIT
             </b>{" "}
-            to play with this sample data or to paste in your own election
-            results!
+            to paste in your own election results!
           </p>
 
           <h3>Need More Help?</h3>

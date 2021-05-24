@@ -113,6 +113,8 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
         <div className="helpTip" style={{ maxWidth: tableWidth + 16 }}>
           Each cell shows voter preference for the candidate in that row versus
           that column.
+          <br />
+          <b>TIP</b>: Click on the column headings to change the data display.
         </div>
       )}
       <div>

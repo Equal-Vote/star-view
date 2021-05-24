@@ -86,6 +86,8 @@ export default function ScoreSummary(props) {
         <div className="helpTip" style={{ maxWidth: tableWidth + 16 }}>
           Each cell shows how many voters assigned the candidate in that row the
           score in that column.
+          <br />
+          <b>TIP</b>: Click on the column headings to change the color coding.
         </div>
       )}
       <div>

@@ -377,7 +377,7 @@ td.runnerup.name {
 .help {
   margin: 2em 0em 0em 1em;
   width: 70%;
-  max-width: 100em;
+  max-width: 60em;
   background-color: #ffd956;
   color: black;
   padding: 0.5em 1em 1em 1em;
@@ -400,6 +400,7 @@ td.runnerup.name {
   padding: 0;
 }
 .helpTip {
+  text-align: left;
   background-color: #ffd956 !important;
   margin-bottom: 0.5em;
   padding: 0.5em !important;
