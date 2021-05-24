@@ -13,7 +13,14 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
     return `${percentage}%`;
   }
 
-  function renderCell(cell, rowIndex, colIndex, minLightRowCol) {
+  function renderCell(
+    cell,
+    rowIndex,
+    colIndex,
+    minLightRowCol,
+    winnerCount,
+    runnerUpCount
+  ) {
     const isSpecial = rowIndex < minLightRowCol && colIndex < minLightRowCol;
     const bgShade = isSpecial ? "dark" : "light";
     const textShade = isSpecial ? "light" : "dark";
@@ -81,10 +88,10 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
   const { sections, candidates, matrix } = isMulti
     ? flattenMulti(cvr)
     : flattenSingle(cvr);
-  const minLightRowCol = isMulti
-    ? 0
-    : sections[0].candidates.length + sections[1].candidates.length;
-
+  const winnerCount = isMulti ? 0 : sections[0].candidates.length;
+  const runnerUpCount = isMulti ? 0 : sections[1].candidates.length;
+  const minLightRowCol = winnerCount + runnerUpCount;
+  console.log("XX", winnerCount, runnerUpCount);
   const rows = [];
   sections.forEach((section, n) => rows.push(...section.candidates));
   const votes = cvr.voters.length;
@@ -131,13 +138,25 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
           <tbody>
             {rows.map((row, rowIndex) => (
               <tr key={rowIndex}>
-                <td className="name">{row.name}</td>
+                <td
+                  className={
+                    rowIndex < winnerCount
+                      ? "winner name"
+                      : rowIndex < minLightRowCol
+                      ? "runnerup name"
+                      : "name"
+                  }
+                >
+                  {row.name}
+                </td>
                 {rows.map((col, colIndex) =>
                   renderCell(
                     matrix[rowIndex][colIndex],
                     rowIndex,
                     colIndex,
-                    minLightRowCol
+                    minLightRowCol,
+                    winnerCount,
+                    runnerUpCount
                   )
                 )}
               </tr>

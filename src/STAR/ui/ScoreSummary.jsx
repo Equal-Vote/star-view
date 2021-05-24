@@ -22,6 +22,9 @@ export default function ScoreSummary(props) {
   const rows = [];
   sections.forEach((section, n) => rows.push(...section.candidates));
   const votes = cvr.voters.length;
+  const winnerCount = isMulti ? 0 : sections[0].candidates.length;
+  const runnerUpCount = isMulti ? 0 : sections[1].candidates.length;
+  const minLightRowCol = winnerCount + runnerUpCount;
 
   const percentage = (count, total) => (
     <span>
@@ -114,7 +117,17 @@ export default function ScoreSummary(props) {
                 onMouseEnter={() => onHover(row, true)}
                 onMouseLeave={() => onHover(row, false)}
               >
-                <td className="name">{row.name}</td>
+                <td
+                  className={
+                    n < winnerCount
+                      ? "winner name"
+                      : n < minLightRowCol
+                      ? "runnerup name"
+                      : "name"
+                  }
+                >
+                  {row.name}
+                </td>
                 <td className="average">{row.averageScore}</td>
                 <td style={greyVotes(row, 0)}>{approval(row, 0)}</td>
                 <td style={greyVotes(row, 1)}>{approval(row, 1)}</td>

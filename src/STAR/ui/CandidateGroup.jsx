@@ -16,8 +16,8 @@ export default function CandidateGroup(props) {
     <>
       <h3 className={titleClass}>{section.title}</h3>
       {section.candidates.map((candidate, n) => (
-        <div key={n} className="wrapper">
-          <Candidate {...props} candidate={candidate} />
+        <div key={n} className={`wrapper ${titleClass}`}>
+          <Candidate {...props} titleClass={titleClass} candidate={candidate} />
         </div>
       ))}
     </>
