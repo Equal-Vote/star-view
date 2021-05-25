@@ -21,7 +21,27 @@ export default function parse(csv) {
   const data = result.data
     .slice(1)
     .filter((row) => row.some((col) => col !== null));
-  return parseData(header, data);
+  console.log("parse", header, data[0]);
+
+  const expanded = expand(header, data);
+  return parseData(header, expanded);
+}
+
+// Look for multiplier in first column
+function expand(header, data) {
+  if (header[0].substr(0, 1) !== "#") {
+    return data;
+  }
+  var expanded = [];
+  data.forEach((row) => {
+    const count = row[0];
+    if (count > 0) {
+      for (var i = 0; i < count; i++) {
+        expanded.push(row);
+      }
+    }
+  });
+  return expanded;
 }
 
 function parseData(header, data) {
@@ -380,6 +400,10 @@ const transformScore = (value) =>
 const isTimestamp = (value) => !isNaN(Date.parse(value));
 const transformTimestamp = (value) => formatTimestamp(value);
 
+// Functions to parse Multiplier
+const isMultiplier = (value) => !isNaN(Number.parseInt(value, 10));
+const transformMultiplier = (value) => Number.parseInt(value, 10);
+
 // Functions to parse everything else
 const isAny = (value) => true;
 const transformAny = (value) => (value ? value.toString().trim() : "");
@@ -388,6 +412,7 @@ const transformAny = (value) => (value ? value.toString().trim() : "");
 const columnTypes = [
   { test: isScore, transform: transformScore },
   { test: isTimestamp, transform: transformTimestamp },
+  { test: isMultiplier, transform: transformMultiplier },
   // Last row MUST accept anything!
   { test: isAny, transform: transformAny }
 ];
@@ -399,6 +424,8 @@ function getTransforms(header, data) {
     var transformIndex = 0;
     if (title === "Timestamp") {
       transformIndex = 1;
+    } else if (title.substr(0, 1) === "#") {
+      transformIndex = 2;
     } else {
       for (let i = 0; i < rowCount; i++) {
         const value = data[i][n];
