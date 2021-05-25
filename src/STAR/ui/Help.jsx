@@ -6,6 +6,13 @@ export default function Help({
   setShowHelp,
   setEditMode
 }) {
+  const electionType = (isMulti) =>
+    isMulti ? (
+      <span className="smallcaps">Multi-Winner</span>
+    ) : (
+      <span className="smallcaps">Single-Winner</span>
+    );
+
   return (
     <div>
       <div className="help">
@@ -29,17 +36,17 @@ export default function Help({
             </li>
           </ul>
           <p className="larger">
-            <b>TIP</b>: Click{" "}
-            <b
-              className="link"
-              onClick={() => {
-                setEditMode(true);
-                setShowHelp(false);
-              }}
-            >
-              EDIT
-            </b>{" "}
-            to paste in your own election results!
+            <b>TIPS</b> on using the main menu:
+            <ol>
+              <li>
+                Click <b>{electionType(isMulti)}</b> to see results for a{" "}
+                {electionType(!isMulti)} election
+              </li>
+              <li>
+                Click <b className="smallcaps">Edit</b> to paste in your own
+                election results
+              </li>
+            </ol>
           </p>
 
           <h3>Need More Help?</h3>

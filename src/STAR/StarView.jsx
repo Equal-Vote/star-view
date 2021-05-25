@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Banner from "./ui/Banner";
-import Edit from "./ui/Edit";
 import Help from "./ui/Help";
+import Edit from "./ui/Edit";
+import EditHelp from "./ui/EditHelp";
 import Results from "./ui/Results";
 import data from "./sample0";
 import { parse } from "./parse";
@@ -60,6 +61,14 @@ export default function StarView(props) {
       />
       {showHelp && !editMode && (
         <Help
+          isMulti={isMulti}
+          setIsMulti={setIsMulti}
+          setShowHelp={setShowHelp}
+          setEditMode={setEditMode}
+        />
+      )}
+      {showHelp && editMode && (
+        <EditHelp
           isMulti={isMulti}
           setIsMulti={setIsMulti}
           setShowHelp={setShowHelp}

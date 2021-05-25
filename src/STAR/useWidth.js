@@ -5,6 +5,7 @@ export default function useWidth(myRef) {
 
   useEffect(() => {
     const handleResize = () => {
+      console.log("WIDTH", myRef.current.offsetWidth);
       setWidth(myRef.current.offsetWidth);
     };
 

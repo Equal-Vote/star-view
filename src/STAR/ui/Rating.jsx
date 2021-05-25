@@ -8,7 +8,7 @@ export default class Rating extends Component {
       <div className="rating">
         <StarRatings
           rating={this.props.rating}
-          widgetDimensions="1em"
+          widgetDimensions="1.5em"
           widgetSpacings="0px"
           widgetRatedColors="#f9a602"
         >

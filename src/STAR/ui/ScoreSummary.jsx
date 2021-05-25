@@ -14,6 +14,7 @@ export default function ScoreSummary(props) {
   } = props;
   const tableRef = useRef();
   const tableWidth = useWidth(tableRef);
+  console.log("Step1", tableWidth);
 
   // Create a flattended list of rows
   const { sections, candidates, matrix } = isMulti
@@ -77,6 +78,13 @@ export default function ScoreSummary(props) {
     return grey(value / votes);
   };
 
+  const getClass = (n) =>
+    n < winnerCount
+      ? "winner name"
+      : n < minLightRowCol
+      ? "runnerup name"
+      : "name";
+
   return (
     <div className="widget score">
       <h1>
@@ -87,7 +95,8 @@ export default function ScoreSummary(props) {
           Each cell shows how many voters assigned the candidate in that row the
           score in that column.
           <br />
-          <b>TIP</b>: Click on the column headings to change the color coding.
+          <b>TIP</b>: Click the column headings to change the{" "}
+          <i>color coding</i> of 0-5 votes.
         </div>
       )}
       <div>
@@ -119,17 +128,7 @@ export default function ScoreSummary(props) {
                 onMouseEnter={() => onHover(row, true)}
                 onMouseLeave={() => onHover(row, false)}
               >
-                <td
-                  className={
-                    n < winnerCount
-                      ? "winner name"
-                      : n < minLightRowCol
-                      ? "runnerup name"
-                      : "name"
-                  }
-                >
-                  {row.name}
-                </td>
+                <td className={getClass(n)}>{row.name}</td>
                 <td className="average">{row.averageScore}</td>
                 <td style={greyVotes(row, 0)}>{approval(row, 0)}</td>
                 <td style={greyVotes(row, 1)}>{approval(row, 1)}</td>

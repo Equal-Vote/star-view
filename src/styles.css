@@ -19,12 +19,14 @@
   --widget-text-color: #404040;
   --widget-bg-color: #e0e0e0;
   --edit-text-color: #e0e0e0;
-  --edit-bg-color: #404040;
+  --edit-bg-color: var(--teal);
   --mainmenu-selected-color: var(--gold);
-  --win-dark: hsl(130, 60%, 35%);
-  --win-light: hsl(95, 50%, 85%);
-  --lose-dark: hsl(0, 78%, 52%);
-  --lose-light: hsl(0, 80%, 92%);
+  --win-dark: hsl(130, 70%, 25%);
+  --lose-dark: hsl(0, 80%, 35%);
+  --win-light: hsl(95, 50%, 75%);
+  --lose-light: hsl(0, 80%, 96%);
+  --winner-bg: hsl(120, 95%, 15%);
+  --runnerup-bg: hsl(120, 15%, 60%);
 }
 
 body {
@@ -88,6 +90,9 @@ button.primary:hover {
 }
 table {
   border-collapse: collapse;
+}
+th {
+  padding: 2px 6px;
 }
 .smallcaps {
   font-variant: small-caps;
@@ -175,22 +180,37 @@ table {
   border: 1px solid #404040;
 }
 .widget .winner .name,
-td.winner.name {
+td.winner.name,
+th.winner {
   font-weight: 700 !important;
-  background-color: black;
+  background-color: var(--winner-bg);
   color: white;
 }
+td.winner,
+th.winner {
+  background-color: var(--winner-bg);
+  color: white;
+}
+
 .widget .runnerup .name,
-td.runnerup.name {
+td.runnerup.name,
+th.runnerup {
   font-weight: 700 !important;
-  background-color: #808080;
+  background-color: var(--runnerup-bg);
   color: white;
 }
+td.runnerup,
+th.runnerup {
+  background-color: var(--runnerup-bg);
+  color: white;
+}
+
 .widget .name {
   font-weight: 400;
 }
 .widget .summary {
   text-align: center;
+  max-width: 40em;
 }
 .widget .summary h1 {
   font-size: 2.5em;
@@ -377,15 +397,24 @@ td.runnerup.name {
 .help {
   margin: 2em 0em 0em 1em;
   width: 70%;
-  max-width: 60em;
+  max-width: 75em;
   background-color: #ffd956;
   color: black;
   padding: 0.5em 1em 1em 1em;
   border-radius: 0.5em;
 }
+/* .edit.help {
+  margin: 2em 0em 1em 1em;
+  width: 70%;
+  max-width: 75em;
+  background-color: #ffd956;
+  color: black;
+  padding: 0.5em 1em 1em 1em;
+  border-radius: 0.5em;
+} */
 .help .close {
   float: right;
-  margin-top: -0.5em;
+  margin-top: 0em;
   margin-right: -0.5em;
   padding: 8px;
   font-size: 20px;
@@ -413,13 +442,14 @@ td.runnerup.name {
 **********************************************/
 
 .editmode {
+  margin: 1em;
   padding: 0.5em 0em 1em 1.5em;
   color: var(--edit-text-color);
   background-color: var(--edit-bg-color);
 }
 .editmode textarea {
   width: 98%;
-  height: calc(100vh - 27em);
+  height: calc(100vh - 28em);
   font-size: 1em;
   padding: 0.25em 0.5em;
 }

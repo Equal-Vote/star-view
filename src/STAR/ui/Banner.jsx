@@ -20,19 +20,13 @@ export default function Banner({
             </div>
             <div
               className={editMode ? "selected" : ""}
-              onClick={() => {
-                setEditMode(!editMode);
-                //setShowHelp(false);
-              }}
+              onClick={() => setEditMode(!editMode)}
             >
               Edit
             </div>
             <div
               className={showHelp ? "selected" : ""}
-              onClick={() => {
-                setEditMode(false);
-                setShowHelp(!showHelp);
-              }}
+              onClick={() => setShowHelp(!showHelp)}
             >
               Help
             </div>

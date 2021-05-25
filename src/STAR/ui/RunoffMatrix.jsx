@@ -13,6 +13,13 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
     return `${percentage}%`;
   }
 
+  const getClass = (n, suffix = "") =>
+    n < winnerCount
+      ? `winner ${suffix}`
+      : n < minLightRowCol
+      ? `runnerup ${suffix}`
+      : suffix;
+
   function renderCell(
     cell,
     rowIndex,
@@ -37,7 +44,6 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
             backgroundColor: `var(--${prefix}-${bgShade})`
           }
         : null;
-
     const key = `${rowIndex},${colIndex}`;
 
     const netVotes = cell ? (
@@ -52,7 +58,9 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
       ""
     );
 
-    if (cell) {
+    if (rowIndex === colIndex) {
+      return <td key={key} className={getClass(rowIndex)}></td>;
+    } else if (cell) {
       switch (view) {
         case 0:
           return (
@@ -91,7 +99,6 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
   const winnerCount = isMulti ? 0 : sections[0].candidates.length;
   const runnerUpCount = isMulti ? 0 : sections[1].candidates.length;
   const minLightRowCol = winnerCount + runnerUpCount;
-  console.log("XX", winnerCount, runnerUpCount);
   const rows = [];
   sections.forEach((section, n) => rows.push(...section.candidates));
   const votes = cvr.voters.length;
@@ -114,7 +121,9 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
           Each cell shows voter preference for the candidate in that row versus
           that column.
           <br />
-          <b>TIP</b>: Click on the column headings to change the data display.
+          <b>TIP</b>: Click the column headings to toggle between displaying{" "}
+          <i>net votes</i> versus counts of{" "}
+          <i>support&nbsp;/&nbsp;oppose&nbsp;/&nbsp;no&nbsp;preference</i>.
         </div>
       )}
       <div>
@@ -128,6 +137,7 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
               <th className="name">Candidate</th>
               {rows.map((row, n) => (
                 <th
+                  className={getClass(n)}
                   key={row.name}
                   onClick={nextView}
                   style={{ cursor: "pointer" }}
@@ -140,17 +150,7 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
           <tbody>
             {rows.map((row, rowIndex) => (
               <tr key={rowIndex}>
-                <td
-                  className={
-                    rowIndex < winnerCount
-                      ? "winner name"
-                      : rowIndex < minLightRowCol
-                      ? "runnerup name"
-                      : "name"
-                  }
-                >
-                  {row.name}
-                </td>
+                <td className={getClass(rowIndex, "name")}>{row.name}</td>
                 {rows.map((col, colIndex) =>
                   renderCell(
                     matrix[rowIndex][colIndex],
