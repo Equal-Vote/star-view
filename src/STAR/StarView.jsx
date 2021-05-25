@@ -4,7 +4,7 @@ import Help from "./ui/Help";
 import Edit from "./ui/Edit";
 import EditHelp from "./ui/EditHelp";
 import Results from "./ui/Results";
-import data from "./sample0";
+import data from "./samples/default";
 import { parse } from "./parse";
 
 export default function StarView(props) {
