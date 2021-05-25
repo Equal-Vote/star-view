@@ -21,9 +21,7 @@ export default function ScoreSummary(props) {
   }, [tableWidth]);
 
   // Create a flattended list of rows
-  const { sections, candidates, matrix } = isMulti
-    ? flattenMulti(cvr)
-    : flattenSingle(cvr);
+  const { sections } = isMulti ? flattenMulti(cvr) : flattenSingle(cvr);
   const rows = [];
   sections.forEach((section, n) => rows.push(...section.candidates));
   const votes = cvr.voters.length;

@@ -10,9 +10,7 @@ export default function StarSummary(props) {
   const { cvr, showHelp, isMulti } = props;
   const votes = cvr.voters.length;
   const undervotes = cvr.undervotes.length;
-  const { sections, candidates, matrix } = isMulti
-    ? flattenMulti(cvr)
-    : flattenSingle(cvr);
+  const { sections } = isMulti ? flattenMulti(cvr) : flattenSingle(cvr);
 
   const [view, setView] = useState(0);
 

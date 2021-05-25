@@ -1,11 +1,6 @@
 import React from "react";
 
-export default function Help({
-  isMulti,
-  setIsMulti,
-  setShowHelp,
-  setEditMode
-}) {
+export default function Help({ isMulti, setShowHelp }) {
   const electionType = (isMulti) =>
     isMulti ? (
       <span className="smallcaps">Multi-Winner</span>
@@ -56,7 +51,7 @@ export default function Help({
               <a
                 href="https://www.starvoting.us/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 www.starvoting.us
               </a>
