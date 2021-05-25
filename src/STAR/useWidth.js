@@ -14,7 +14,7 @@ export default function useWidth(myRef) {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [myRef]);
+  }, [myRef, width]);
 
   return width;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import useWidth from "../useWidth";
 import { flattenSingle, flattenMulti } from "../flatten";
 
@@ -91,6 +91,11 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
 
   const tableRef = useRef();
   const tableWidth = useWidth(tableRef);
+  useEffect(() => {
+    if (tableWidth === 0) {
+      window.dispatchEvent(new Event("resize"));
+    }
+  }, [tableWidth]);
 
   // Create a flattended list of rows
   const { sections, candidates, matrix } = isMulti

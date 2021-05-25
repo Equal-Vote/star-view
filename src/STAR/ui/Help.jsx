@@ -37,17 +37,17 @@ export default function Help({
           </ul>
           <p className="larger">
             <b>TIPS</b> on using the main menu:
-            <ol>
-              <li>
-                Click <b>{electionType(isMulti)}</b> to see results for a{" "}
-                {electionType(!isMulti)} election
-              </li>
-              <li>
-                Click <b className="smallcaps">Edit</b> to paste in your own
-                election results
-              </li>
-            </ol>
           </p>
+          <ol>
+            <li>
+              Click <b>{electionType(isMulti)}</b> to see results for a{" "}
+              {electionType(!isMulti)} election
+            </li>
+            <li>
+              Click <b className="smallcaps">Edit</b> to paste in your own
+              election results
+            </li>
+          </ol>
 
           <h3>Need More Help?</h3>
           <ul>

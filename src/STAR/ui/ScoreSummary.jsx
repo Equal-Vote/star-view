@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import useWidth from "../useWidth";
 import { flattenSingle, flattenMulti } from "../flatten";
 
@@ -14,7 +14,11 @@ export default function ScoreSummary(props) {
   } = props;
   const tableRef = useRef();
   const tableWidth = useWidth(tableRef);
-  console.log("Step1", tableWidth);
+  useEffect(() => {
+    if (tableWidth === 0) {
+      window.dispatchEvent(new Event("resize"));
+    }
+  }, [tableWidth]);
 
   // Create a flattended list of rows
   const { sections, candidates, matrix } = isMulti
