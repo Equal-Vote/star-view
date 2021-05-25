@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import sample0 from "../sample0";
-import sample1 from "../sample1";
-import sample2 from "../sample2";
+import sampleDefault from "../samples/default";
+import sampleMultipliers from "../samples/multipliers";
+import samplePrezPoll from "../samples/prezpoll";
+import sampleIPO from "../samples/ipo";
 
 export default function Edit({ csv, title, onSave, onCancel, invalid }) {
   const [caption, setCaption] = useState(title);
@@ -12,19 +13,23 @@ export default function Edit({ csv, title, onSave, onCancel, invalid }) {
   const handleDataChange = (event) => {
     setData(event.target.value);
   };
-  const onLoad = (index) => {
-    switch (index) {
-      case 0:
+  const onLoad = (name) => {
+    switch (name) {
+      case "default":
         setCaption("Sample Election");
-        setData(sample0);
+        setData(sampleDefault);
         break;
-      case 1:
+      case "multipliers":
+        setCaption("Sample With Ballot Multipliers");
+        setData(sampleMultipliers);
+        break;
+      case "prezpoll":
         setCaption("2020 Presidential Poll");
-        setData(sample1);
+        setData(samplePrezPoll);
         break;
-      case 2:
+      case "ipo":
         setCaption("2020 IPO Secretary of State");
-        setData(sample2);
+        setData(sampleIPO);
         break;
       default:
         break;
@@ -66,10 +71,11 @@ export default function Edit({ csv, title, onSave, onCancel, invalid }) {
         </button>
         &nbsp;&nbsp;
         <button onClick={onCancel}>Cancel</button>
-        <span className="label">Load Example Data:</span>
-        <button onClick={() => onLoad(0)}>Tiny</button>
-        <button onClick={() => onLoad(1)}>Presidential Poll</button>
-        <button onClick={() => onLoad(2)}>IPO Sec Of State</button>
+        <span className="label">Sample Data:</span>
+        <button onClick={() => onLoad("default")}>Default</button>
+        <button onClick={() => onLoad("multipliers")}>w/Multipliers</button>
+        <button onClick={() => onLoad("prezpoll")}>Presidential Poll</button>
+        <button onClick={() => onLoad("ipo")}>IPO 2020</button>
       </div>
     </div>
   );

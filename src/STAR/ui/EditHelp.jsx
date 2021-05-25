@@ -16,8 +16,8 @@ export default function EditHelp({ setShowHelp }) {
           supported including commas, tabs, and semi-colons.
         </p>
         <p>
-          You can even include blank lines and comment lines (starting with //)
-          which will be ignored but allow you to annotate your data.
+          <b>TIP</b>: Click the <i>Sample Data</i> buttons for examples of how
+          election data can be formatted
         </p>
       </div>
     </div>
