@@ -21,7 +21,6 @@ export default function parse(csv) {
   const data = result.data
     .slice(1)
     .filter((row) => row.some((col) => col !== null));
-  console.log("parse", header, data[0]);
 
   const expanded = expand(header, data);
   return parseData(header, expanded);

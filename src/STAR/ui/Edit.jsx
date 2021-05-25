@@ -61,6 +61,7 @@ export default function Edit({ csv, title, onSave, onCancel, invalid }) {
       )}
       <textarea
         spellCheck="false"
+        data-gramm_editor="false"
         value={data}
         onChange={handleDataChange}
         autoFocus={true}

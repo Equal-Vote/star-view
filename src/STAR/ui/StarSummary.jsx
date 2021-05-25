@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import useWidth from "../useWidth";
 import CandidateGroup from "./CandidateGroup";
 import { flattenSingle, flattenMulti } from "../flatten";
@@ -14,10 +14,12 @@ export default function StarSummary(props) {
     ? flattenMulti(cvr)
     : flattenSingle(cvr);
 
+  const [view, setView] = useState(0);
+
   return (
     <div className="widget">
       <div className="summary">
-        <h1>{props.title}</h1>
+        <h1 onClick={() => setView((view + 1) % 3)}>{props.title}</h1>
         <h2>
           {votes} voters {undervotes ? `plus ${undervotes} undervotes` : ""}
         </h2>
@@ -39,6 +41,7 @@ export default function StarSummary(props) {
               {...props}
               key={isMulti ? `m${n}` : `s${n}`}
               section={section}
+              view={view}
             />
           ))}
         </div>

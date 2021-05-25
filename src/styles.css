@@ -211,11 +211,11 @@ th.runnerup {
 }
 .widget .summary {
   text-align: center;
-  max-width: 40em;
 }
 .widget .summary h1 {
   font-size: 2.5em;
   font-weight: 700;
+  cursor: pointer;
 }
 .widget .summary h2 {
   font-size: 1.75em;
@@ -259,6 +259,34 @@ th.runnerup {
 .widget .summary .rating {
   margin: 0 0 -0.25em 0;
   padding: 0;
+}
+
+/* Try out Eric's side-by-side approach */
+.widget .summary .horizontal {
+  font-size: 1.75em;
+  font-weight: 400;
+  font-style: normal;
+  color: black;
+  background-color: white;
+  margin: 0.1em 0.75em 0.5em 0.75em;
+}
+.widget .summary .horizontal .name {
+  text-align: left;
+  padding: 0.25em;
+  width: 10em;
+  float: left;
+}
+.widget .summary .horizontal .rating {
+  width: 5em;
+  margin: 0.25em 0.25em 0em 0.25em;
+  padding: 0;
+  float: left;
+}
+.widget .summary .horizontal .support {
+  margin: -8px 0px 2em 0px;
+}
+.widget .summary .horizontal.starsonly .support {
+  display: none;
 }
 
 .widget span.percent {
