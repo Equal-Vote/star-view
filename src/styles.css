@@ -436,6 +436,9 @@ th.runnerup {
   color: black;
   border-radius: 0.5em;
 }
+.helpTip p {
+  margin: 4px;
+}
 
 /**********************************************
   Edit page styles 

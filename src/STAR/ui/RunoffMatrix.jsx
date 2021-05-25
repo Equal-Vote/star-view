@@ -123,12 +123,15 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
       </h1>
       {showHelp && (
         <div className="helpTip" style={{ maxWidth: tableWidth + 16 }}>
-          Each cell shows voter preference for the candidate in that row versus
-          that column.
-          <br />
-          <b>TIP</b>: Click the column headings to toggle between displaying{" "}
-          <i>net votes</i> versus counts of{" "}
-          <i>support&nbsp;/&nbsp;oppose&nbsp;/&nbsp;no&nbsp;preference</i>.
+          <p>
+            Each cell shows voter preference for the candidate in that row
+            versus that column.
+          </p>
+          <p>
+            <b>TIP</b>: Click the column headings to toggle between displaying{" "}
+            <i>net votes</i> versus counts of{" "}
+            <i>support&nbsp;/&nbsp;oppose&nbsp;/&nbsp;no&nbsp;preference</i>.
+          </p>
         </div>
       )}
       <div>

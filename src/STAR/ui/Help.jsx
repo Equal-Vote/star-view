@@ -21,7 +21,7 @@ export default function Help({
             X
           </div>
           <h1>Help</h1>
-          <p>
+          <p className="larger">
             <b>STAR</b> = <b>Score</b> <b>T</b>hen <b>A</b>utomatic{" "}
             <b>Runoff</b>
           </p>
@@ -35,7 +35,7 @@ export default function Help({
               finalists. The most preferred candidate wins.
             </li>
           </ul>
-          <p className="larger">
+          <p>
             <b>TIPS</b> on using the main menu:
           </p>
           <ol>

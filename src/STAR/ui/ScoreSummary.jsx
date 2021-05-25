@@ -96,11 +96,14 @@ export default function ScoreSummary(props) {
       </h1>
       {showHelp && (
         <div className="helpTip" style={{ maxWidth: tableWidth + 16 }}>
-          Each cell shows how many voters assigned the candidate in that row the
-          score in that column.
-          <br />
-          <b>TIP</b>: Click the column headings to change the{" "}
-          <i>color coding</i> of 0-5 votes.
+          <p>
+            Each cell shows how many voters assigned the candidate in that row
+            the score in that column.
+          </p>
+          <p>
+            <b>TIP</b>: Click the column headings to change the{" "}
+            <i>color coding</i> of 0-5 votes.
+          </p>
         </div>
       )}
       <div>

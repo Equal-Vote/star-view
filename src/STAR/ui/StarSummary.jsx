@@ -26,9 +26,11 @@ export default function StarSummary(props) {
             className="helpTip"
             style={{ maxWidth: tableWidth - 16, marginLeft: 8, marginRight: 8 }}
           >
-            {isMulti
-              ? "In a Multi-Winner election, the single-winner tabulation process is repeated until all candidates have been ranked."
-              : "In a Single-Winner election, the winner is shown first, followed by the runner-up finalist, then the other candidates by descending total score."}
+            <p>
+              {isMulti
+                ? "In a Multi-Winner election, the single-winner tabulation process is repeated until all candidates have been ranked."
+                : "In a Single-Winner election, the winner is shown first, followed by the runner-up finalist, then the other candidates by descending total score."}
+            </p>
           </div>
         )}
         <div ref={tableRef}>
