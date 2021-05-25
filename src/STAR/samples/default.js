@@ -1,5 +1,6 @@
 const data = `// Try editing the data, results will update when you click Save
 // TIP: Changing the last number on the first data row can change the election results!
+
 A,B,C,D,E
 0,0,5,3,2
 4,0,3,2,3

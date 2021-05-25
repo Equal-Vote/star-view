@@ -8,6 +8,7 @@
   --gold: #f9a602;
   --yellow: #ffd956;
   --teal: #026a86;
+  --cyan: #2aa2b3;
 
   --link: blue;
   --base-font-family: Montserrat;
@@ -61,7 +62,7 @@ h4 {
 button {
   font-size: 1em;
   color: white;
-  background-color: var(--teal);
+  background-color: var(--cyan);
   border: none;
   text-decoration: none;
   margin-left: 1em;

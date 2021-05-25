@@ -1,6 +1,8 @@
 const data = `// Based on the 2020 Independent Party of Oregon Primary
 // https://www.starvoting.us/ipo_primary_5_19_20
+
 Shemia Fagan	Mark Hass	Jamie McLeod-Skinner	Ken Smith	Kim Thatcher	Armand "Rich" Vial
+
 3	4	5	0	0	0
 0	0	0	0	5	0
 4	5	4	4	0	0
