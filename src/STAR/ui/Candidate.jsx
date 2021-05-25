@@ -3,7 +3,7 @@ import Rating from "./Rating";
 import Support from "./Support";
 
 export default function Candidate(props) {
-  const { candidate, titleClass, view, selected, onHover, cvr } = props;
+  const { candidate, titleClass, view } = props;
   var className = `name ${titleClass}`;
 
   const viewClass =

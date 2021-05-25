@@ -98,23 +98,12 @@ export default function RunoffMatrix({ cvr, showHelp, isMulti }) {
   }, [tableWidth]);
 
   // Create a flattended list of rows
-  const { sections, candidates, matrix } = isMulti
-    ? flattenMulti(cvr)
-    : flattenSingle(cvr);
+  const { sections, matrix } = isMulti ? flattenMulti(cvr) : flattenSingle(cvr);
   const winnerCount = isMulti ? 0 : sections[0].candidates.length;
   const runnerUpCount = isMulti ? 0 : sections[1].candidates.length;
   const minLightRowCol = winnerCount + runnerUpCount;
   const rows = [];
   sections.forEach((section, n) => rows.push(...section.candidates));
-  const votes = cvr.voters.length;
-  const undervotes = cvr.undervotes.length;
-  //const bulletvotes = cvr.bulletvotes.length;
-  const percentage = (count, total) => (
-    <span>
-      {(Number(count / total) * 100).toFixed()}%{" "}
-      <span className="smaller">({count})</span>
-    </span>
-  );
 
   return (
     <div className="widget runoff">
