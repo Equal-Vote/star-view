@@ -14,8 +14,8 @@
 #
 # NODE_OPTIONS=--openssl-legacy-provider: webpack 4 hashing vs OpenSSL 3.
 #
-# No test step: `npm test` currently fails on "test1 tie breaking",
-# 1 failed / 8 passed, on the default branch.
+# The test step runs 9 parser/tally tests. It needs no OpenSSL workaround --
+# that is a webpack concern, and jest does not go through webpack.
 name: PR CI
 
 "on":
@@ -59,3 +59,10 @@ jobs:
           CI: "false"
           NODE_OPTIONS: --openssl-legacy-provider
         run: npm run build
+
+      - name: Test
+        # --watchAll=false explicitly, rather than depending on the CI
+        # environment variable: react-scripts drops into interactive watch
+        # mode whenever CI is unset, which would hang the job indefinitely.
+        # Being explicit keeps the step correct regardless of environment.
+        run: npm test -- --watchAll=false
